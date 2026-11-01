@@ -1,0 +1,4 @@
+node_modules/
+sgif.db
+sgif.db-wal
+sgif.db-shm

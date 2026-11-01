@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SGIF · Ferretería Americana</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="lateral">
+    <div class="marca">
+      <span class="marca-sigla">SGIF</span>
+      <span class="marca-nombre">Ferretería Americana</span>
+    </div>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#/inicio" data-ruta="inicio">Inicio</a>
+      <a href="#/productos" data-ruta="productos">Productos</a>
+      <a href="#/categorias" data-ruta="categorias">Categorías</a>
+      <a href="#/consulta" data-ruta="consulta">Consulta rápida</a>
+      <a href="#/recepcion" data-ruta="recepcion">Recepción de mercancía</a>
+    </nav>
+  </aside>
+
+  <main id="vista" tabindex="-1"></main>
+
+  <!-- Producto: crear y editar -->
+  <dialog id="dlgProducto">
+    <form id="formProducto" novalidate>
+      <h2 id="tituloProducto">Nuevo producto</h2>
+      <div class="rejilla">
+        <label>Código
+          <input name="codigo" required maxlength="30" autocomplete="off">
+        </label>
+        <label>Categoría
+          <select name="categoria_id" required></select>
+        </label>
+        <label class="ancho">Descripción
+          <input name="descripcion" required maxlength="120" autocomplete="off">
+        </label>
+        <label>Precio (RD$, sin ITBIS)
+          <input name="precio" type="number" min="0" step="0.01" required>
+        </label>
+        <label>Existencia
+          <input name="existencia" type="number" min="0" step="1" required>
+        </label>
+        <label>Stock mínimo
+          <input name="stock_minimo" type="number" min="0" step="1" required>
+        </label>
+        <label>Pasillo
+          <input name="pasillo" required maxlength="10" autocomplete="off">
+        </label>
+        <label>Estante
+          <input name="estante" required maxlength="10" autocomplete="off">
+        </label>
+        <label>Nivel
+          <input name="nivel" required maxlength="10" autocomplete="off">
+        </label>
+      </div>
+      <p class="error" id="errProducto" role="alert" hidden></p>
+      <div class="acciones">
+        <button type="button" class="btn secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="btn primario">Guardar producto</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Categoría: crear y editar -->
+  <dialog id="dlgCategoria">
+    <form id="formCategoria" novalidate>
+      <h2 id="tituloCategoria">Nueva categoría</h2>
+      <div class="rejilla una">
+        <label>Nombre
+          <input name="nombre" required maxlength="60" autocomplete="off">
+        </label>
+        <label>Descripción (opcional)
+          <input name="descripcion" maxlength="160" autocomplete="off">
+        </label>
+      </div>
+      <p class="error" id="errCategoria" role="alert" hidden></p>
+      <div class="acciones">
+        <button type="button" class="btn secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="btn primario">Guardar categoría</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Confirmación de eliminación -->
+  <dialog id="dlgConfirmar">
+    <form method="dialog">
+      <h2 id="tituloConfirmar">¿Eliminar?</h2>
+      <p id="textoConfirmar"></p>
+      <div class="acciones">
+        <button value="cancelar" class="btn secundario">Cancelar</button>
+        <button value="ok" class="btn peligro">Sí, eliminar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="aviso" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

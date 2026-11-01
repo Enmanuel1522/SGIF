@@ -1,0 +1,17 @@
+{
+  "name": "sgif",
+  "version": "1.0.0",
+  "description": "SGIF - Sistema de Gestión de Inventario Ferretero (Sprint 1)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "reset": "node -e \"['sgif.db','sgif.db-wal','sgif.db-shm'].forEach(f=>require('fs').rmSync(f,{force:true}))\""
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "express": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
